@@ -1,5 +1,5 @@
 
-const Organization = require('../models/Organization');
+const Organization = require('../model/Organization');
 
 // Create a new organization
 exports.createOrganization = async (req, res) => {

@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const authMiddleware = require('../middleware/authMiddleware');
 const roleMiddleware = require('../middleware/roleMiddleware');
-const featureController = require('../controllers/featureController');
+const featureController = require('../controller/featureController');
 
 // Create a new feature 
 router.post('/', authMiddleware, roleMiddleware('ORG_ADMIN'), featureController.createFeature);
@@ -17,6 +17,6 @@ router.put('/:id', authMiddleware, roleMiddleware('ORG_ADMIN'), featureControlle
 router.delete('/:id', authMiddleware, roleMiddleware('ORG_ADMIN'), featureController.deleteFeature);
 
 // check features only for users
-router.post('/check', authMiddleware, roleMiddleware('USER'), featureController.checkFeatures);
+router.post('/check', authMiddleware, roleMiddleware('USER'), featureController.checkFeature);
 
 module.exports = router;

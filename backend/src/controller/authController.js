@@ -13,8 +13,6 @@ exports.superAdminLogin = async (req, res) => {
     }
     
     const token = generateToken({ _id: 'SUPER_ADMIN', role: 'SUPER_ADMIN' });
-    res.json({ token });
-
     res.status(200).json({ message: 'Super Admin logged in successfully', token }); 
 
 } catch (error) {

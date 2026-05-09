@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const authMiddleware = require('../middleware/authMiddleware');
-const organizationController = require('../controllers/organizationController');
+const organizationController = require('../controller/organizationController');
 const roleMiddleware = require('../middleware/roleMiddleware');
 
 // Create a new organization (super admin only)

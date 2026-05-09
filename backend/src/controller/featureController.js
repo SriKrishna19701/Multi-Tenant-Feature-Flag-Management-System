@@ -1,4 +1,4 @@
-const Feature = require('../models/Feature');
+const Feature = require('../model/Feature');
 
 // Create a new feature
 exports.createFeature = async (req, res) => {

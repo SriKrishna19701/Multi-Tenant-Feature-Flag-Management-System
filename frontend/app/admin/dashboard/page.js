@@ -95,7 +95,7 @@ export default function AdminDashboard() {
                         placeholder="Feature Key"
                         value={featureKey}
                         onChange={(e) => setFeatureKey(e.target.value)}
-                        className="px-3 py-2 border rounded focus:outline-none focus:ring focus:border-blue-300"
+                        className="px-3 py-2 border rounded text-black placeholder:text-black focus:outline-none focus:ring focus:border-blue-300"
                         required
                     />
                     <label className="flex items-center gap-2 text-black">

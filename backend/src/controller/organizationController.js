@@ -29,3 +29,27 @@ exports.getOrganizations = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
+
+// Delete an organization
+exports.deleteOrganization = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const organization = await Organization.findByIdAndDelete(id);
+        if (!organization) {
+            return res.status(404).json({ message: 'Organization not found' });
+        }
+        res.json({ message: 'Organization deleted successfully' });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
+// Public organization list for registration
+exports.getOrganizationsPublic = async (req, res) => {
+    try {
+        const organizations = await Organization.find();
+        res.json(organizations);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};

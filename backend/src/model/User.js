@@ -20,6 +20,10 @@ const userSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Organization',
         required: true
+    },
+    role: {
+        type: String,
+        enum: ['ORG_ADMIN', 'USER'],
     }
 }, {
     timestamps: true

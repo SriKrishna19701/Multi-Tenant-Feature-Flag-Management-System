@@ -38,7 +38,7 @@ export default function UserDashboard() {
                     <div>
                         <p className="text-sm uppercase tracking-[0.2em] text-blue-600 font-semibold">User Dashboard</p>
                         <h1 className="mt-3 text-3xl font-bold text-black">Organization Feature List</h1>
-                        <p className="mt-2 text-gray-600 max-w-2xl">All available features for your organization are listed below. See at a glance whether each feature is enabled or disabled.</p>
+                        <p className="mt-2 text-slate-700 max-w-2xl">All available features for your organization are listed below. See at a glance whether each feature is enabled or disabled.</p>
                     </div>
                     <button
                         onClick={handleLogout}
@@ -51,7 +51,7 @@ export default function UserDashboard() {
                 <div className="grid gap-4">
                     <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
                         <h2 className="text-xl font-semibold text-black mb-2">Feature Overview</h2>
-                        <p className="text-sm text-slate-600">Features are loaded from your current organization context and displayed with their enabled status.</p>
+                        <p className="text-sm text-slate-700">Features are loaded from your current organization context and displayed with their enabled status.</p>
                     </div>
 
                     {loading ? (

@@ -49,7 +49,7 @@ select,
 textarea {
   background: var(--card);
   border: 1px solid var(--border);
-  color: var(--foreground) !important;
+  color: #0f172a !important;
 }
 
 ::selection {
@@ -67,10 +67,14 @@ h6 {
 }
 
 label {
-  color: var(--foreground);
+  color: #0f172a !important;
 }
 
-::placeholder {
-  color: #94a3b8;
+::placeholder,
+::-webkit-input-placeholder,
+::-moz-placeholder,
+:-ms-input-placeholder,
+:-moz-placeholder {
+  color: #0f172a !important;
   opacity: 1;
 }

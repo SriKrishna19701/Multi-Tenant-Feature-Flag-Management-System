@@ -49,39 +49,36 @@ export default function SuperAdminDashboard() {
 
     return (
         <div className="min-h-screen bg-slate-50 text-slate-900">
-            <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
-                <div className="overflow-hidden rounded-[2rem] bg-gradient-to-r from-sky-600 via-cyan-500 to-indigo-600 p-8 shadow-2xl shadow-slate-300/40">
-                    <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-                        <div className="max-w-3xl text-white">
-                            <p className="text-sm uppercase tracking-[0.3em] font-semibold text-cyan-100">Super Admin Dashboard</p>
-                            <h1 className="mt-4 text-4xl font-extrabold tracking-tight">Manage your tenant organizations</h1>
-                            <p className="mt-4 text-base leading-7 text-slate-100/90">Create organizations as needed. Organization removal is disabled for super-admins here to keep tenant access safe and consistent.</p>
+            <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
+                <div className="grid gap-6 lg:grid-cols-[1.3fr_0.7fr]">
+                    <div className="rounded-[2rem] bg-white/95 p-8 shadow-[0_30px_60px_-30px_rgba(15,23,42,0.3)] ring-1 ring-slate-200">
+                        <p className="text-sm uppercase tracking-[0.3em] text-slate-500">Super Admin</p>
+                        <h1 className="mt-4 text-4xl font-semibold text-slate-900">Tenant organization management</h1>
+                        <p className="mt-3 max-w-2xl text-slate-600">Add and review tenant organizations in a clean, unified dashboard. Deletion is disabled here to keep your platform safe.</p>
+                    </div>
+                    <div className="rounded-[2rem] bg-white/95 p-8 shadow-[0_30px_60px_-30px_rgba(15,23,42,0.3)] ring-1 ring-slate-200">
+                        <div className="flex items-center justify-between gap-4">
+                            <div>
+                                <p className="text-sm text-slate-500">Quick actions</p>
+                                <h2 className="mt-2 text-xl font-semibold text-slate-900">Create organization</h2>
+                            </div>
+                            <button
+                                onClick={handleLogout}
+                                className="rounded-3xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-slate-900/10 transition hover:bg-slate-800"
+                            >
+                                Logout
+                            </button>
                         </div>
                         <button
-                            onClick={handleLogout}
-                            className="inline-flex shrink-0 items-center justify-center rounded-3xl bg-white/95 px-6 py-3 text-sm font-semibold text-slate-900 shadow-lg shadow-slate-900/10 transition hover:bg-white"
+                            onClick={handleCreateOrganization}
+                            className="mt-8 inline-flex w-full items-center justify-center rounded-3xl bg-slate-900 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-slate-900/10 transition hover:bg-slate-800"
                         >
-                            Logout
+                            Create Organization
                         </button>
                     </div>
                 </div>
 
-                <div className="mt-10 grid gap-6">
-                    <div className="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-lg shadow-slate-200/60">
-                        <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-                            <div>
-                                <h2 className="text-xl font-semibold text-slate-900">Organization List</h2>
-                                <p className="mt-2 text-sm text-slate-600">Super admins can add organizations. Deletion is intentionally disabled in this view.</p>
-                            </div>
-                            <button
-                                onClick={handleCreateOrganization}
-                                className="inline-flex items-center justify-center rounded-3xl bg-slate-900 px-6 py-3 text-sm font-semibold text-white transition hover:bg-slate-800"
-                            >
-                                Create Organization
-                            </button>
-                        </div>
-                    </div>
-
+                <div className="mt-8 space-y-6">
                     {loading ? (
                         <div className="rounded-[2rem] border border-slate-200 bg-white p-10 text-center text-slate-900 shadow-lg shadow-slate-200/60">Loading organizations…</div>
                     ) : error ? (
@@ -95,10 +92,6 @@ export default function SuperAdminDashboard() {
                                     <div className="space-y-2">
                                         <h3 className="text-lg font-semibold text-slate-900">{organization.name}</h3>
                                         <p className="text-sm text-slate-500">Tenant ID: {organization._id}</p>
-                                    </div>
-                                    <div className="inline-flex items-center gap-2 rounded-full bg-amber-100 px-3 py-1 text-sm font-semibold text-amber-800">
-                                        <span className="h-2.5 w-2.5 rounded-full bg-amber-500" />
-                                        Deletion restricted for super admins
                                     </div>
                                 </div>
                             ))}

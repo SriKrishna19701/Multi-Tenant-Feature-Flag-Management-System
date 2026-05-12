@@ -5,14 +5,13 @@ import api from '@/services/api';
 import { useRouter } from 'next/navigation';
 
 export default function LoginPage() {
-    const [ email, setEmail ] = useState('');
-    const [ password, setPassword ] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const router = useRouter();
 
-    // handling Submission
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try  {
+        try {
             const response = await api.post('/auth/user/login', { email, password });
             localStorage.setItem('token', response.data.token);
             router.push('/user/dashboard');
@@ -23,44 +22,51 @@ export default function LoginPage() {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-100">
-            <div className="bg-white p-8 rounded shadow-md w-full max-w-md">
-                <h2 className="text-2xl font-bold mb-6 text-black text-center">User Login</h2>
-                <form onSubmit={handleSubmit}>
-                    <div className="mb-4">
-                        <label className="block text-black mb-2" htmlFor="email">Email</label>
+        <div className="min-h-screen bg-slate-50 px-4 py-12 flex items-center justify-center">
+            <div className="w-full max-w-md rounded-[2rem] bg-white/95 p-10 shadow-[0_30px_60px_-30px_rgba(15,23,42,0.3)] ring-1 ring-slate-200">
+                <div className="mb-8 space-y-3">
+                    <span className="inline-flex rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">User Login</span>
+                    <h2 className="text-3xl font-semibold tracking-tight text-slate-900">Welcome back</h2>
+                    <p className="text-sm text-slate-600">Sign in to view your organization feature list and status.</p>
+                </div>
+                <form onSubmit={handleSubmit} className="space-y-6">
+                    <div>
+                        <label htmlFor="email" className="block text-sm font-medium text-slate-700">Email</label>
                         <input
-                            type="email"
                             id="email"
+                            type="email"
+                            autoComplete="email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            className="w-full px-3 py-2 border rounded text-black focus:outline-none focus:ring focus:border-blue-300"
+                            className="mt-2 w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-slate-900 outline-none transition focus:border-slate-900 focus:bg-white"
                             required
                         />
                     </div>
-                    <div className="mb-6">
-                        <label className="block text-black mb-2" htmlFor="password">Password</label>
+                    <div>
+                        <label htmlFor="password" className="block text-sm font-medium text-slate-700">Password</label>
                         <input
-                            type="password"
                             id="password"
+                            type="password"
+                            autoComplete="current-password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
-                            className="w-full px-3 py-2 border rounded text-black focus:outline-none focus:ring focus:border-blue-300"
+                            className="mt-2 w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-slate-900 outline-none transition focus:border-slate-900 focus:bg-white"
                             required
                         />
                     </div>
                     <button
                         type="submit"
-                        className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition duration-200"
+                        className="w-full rounded-xl bg-slate-900 py-3 text-sm font-semibold text-white shadow-lg shadow-slate-900/10 transition hover:bg-slate-800"
                     >
                         Login
                     </button>
                 </form>
-                <div className="mt-4 text-center">
-                    <span className="text-gray-600">Don&apos;t have an account? </span>
-                    <a href="/user/signup" className="text-blue-500 hover:underline">Register here</a>
+                <div className="mt-6 text-center text-sm text-slate-600">
+                    Don&apos;t have an account?{' '}
+                    <a href="/user/signup" className="font-semibold text-slate-900 hover:underline">Create one</a>
                 </div>
-             </div>
-         </div>
-     );
-}    
+            </div>
+        </div>
+    );
+}
+    

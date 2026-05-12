@@ -24,10 +24,9 @@ export default function RegisterPage() {
         fetchOrganizations();
     }, []);
 
-    // handling Submission
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try  {
+        try {
             const response = await api.post('/auth/user/register', {
                 name,
                 email,
@@ -43,39 +42,44 @@ export default function RegisterPage() {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-100">
-            <div className="bg-white p-8 rounded shadow-md w-full max-w-md">
-                <h2 className="text-2xl font-bold mb-6 text-black text-center">User Signup</h2>
-                <form onSubmit={handleSubmit}>
-                    <div className="mb-4">
-                        <label className="block text-black mb-2" htmlFor="name">Name</label>
+        <div className="min-h-screen bg-slate-50 px-4 py-12 flex items-center justify-center">
+            <div className="w-full max-w-md rounded-[2rem] bg-white/95 p-10 shadow-[0_30px_60px_-30px_rgba(15,23,42,0.3)] ring-1 ring-slate-200">
+                <div className="mb-8 space-y-3">
+                    <span className="inline-flex rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">New account</span>
+                    <h2 className="text-3xl font-semibold tracking-tight text-slate-900">Create your account</h2>
+                    <p className="text-sm text-slate-600">Register with your organization to see feature access and available flags.</p>
+                </div>
+                <form onSubmit={handleSubmit} className="space-y-6">
+                    <div>
+                        <label htmlFor="name" className="block text-sm font-medium text-slate-700">Name</label>
                         <input
-                            type="text"
                             id="name"
+                            type="text"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
-                            className="w-full px-3 py-2 border rounded text-black focus:outline-none focus:ring focus:border-blue-300"
+                            className="mt-2 w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-slate-900 outline-none transition focus:border-slate-900 focus:bg-white"
                             required
                         />
                     </div>
-                    <div className="mb-4">
-                        <label className="block text-black mb-2" htmlFor="email">Email</label>
+                    <div>
+                        <label htmlFor="email" className="block text-sm font-medium text-slate-700">Email</label>
                         <input
-                            type="email"
                             id="email"
+                            type="email"
+                            autoComplete="email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            className="w-full px-3 py-2 border rounded text-black focus:outline-none focus:ring focus:border-blue-300"
+                            className="mt-2 w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-slate-900 outline-none transition focus:border-slate-900 focus:bg-white"
                             required
                         />
                     </div>
-                    <div className="mb-4">
-                        <label className="block text-black mb-2" htmlFor="organization">Organization</label>
+                    <div>
+                        <label htmlFor="organization" className="block text-sm font-medium text-slate-700">Organization</label>
                         <select
                             id="organization"
                             value={organization}
                             onChange={(e) => setOrganization(e.target.value)}
-                            className="w-full px-3 py-2 border rounded text-black focus:outline-none focus:ring focus:border-blue-300"
+                            className="mt-2 w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-slate-900 outline-none transition focus:border-slate-900 focus:bg-white"
                             required
                         >
                             <option value="" disabled>
@@ -86,25 +90,27 @@ export default function RegisterPage() {
                             ))}
                         </select>
                     </div>
-                    <div className="mb-6">
-                        <label className="block text-black mb-2" htmlFor="password">Password</label>
+                    <div>
+                        <label htmlFor="password" className="block text-sm font-medium text-slate-700">Password</label>
                         <input
-                            type="password"
                             id="password"
+                            type="password"
+                            autoComplete="new-password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
-                            className="w-full px-3 py-2 border rounded text-black focus:outline-none focus:ring focus:border-blue-300"
+                            className="mt-2 w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-slate-900 outline-none transition focus:border-slate-900 focus:bg-white"
                             required
                         />
                     </div>
                     <button
                         type="submit"
-                        className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition duration-200"
+                        className="w-full rounded-xl bg-slate-900 py-3 text-sm font-semibold text-white shadow-lg shadow-slate-900/10 transition hover:bg-slate-800"
                     >
-                        Signup
+                        Create account
                     </button>
                 </form>
             </div>
         </div>
     );
-}   
+}
+   

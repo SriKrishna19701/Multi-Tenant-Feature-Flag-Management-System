@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: feature-flag-backend
+    env: node
+    plan: starter
+    region: oregon
+    branch: main
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: MONGODB_URI
+      - key: JWT_SECRET
+      - key: SUPER_ADMIN_EMAIL
+      - key: SUPER_ADMIN_PASSWORD
+    autoDeploy: true

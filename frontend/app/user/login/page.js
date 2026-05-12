@@ -13,7 +13,7 @@ export default function LoginPage() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try  {
-            const response = await api.post('/auth/login', { email, password });
+            const response = await api.post('/auth/user/login', { email, password });
             localStorage.setItem('token', response.data.token);
             router.push('/user/dashboard');
         } catch (error) {
@@ -56,7 +56,11 @@ export default function LoginPage() {
                         Login
                     </button>
                 </form>
-            </div>
-        </div>
-    );
-}       
+                <div className="mt-4 text-center">
+                    <span className="text-gray-600">Don't have an account? </span>
+                    <a href="/user/signup" className="text-blue-500 hover:underline">Register here</a>
+                </div>
+             </div>
+         </div>
+     );
+}    
